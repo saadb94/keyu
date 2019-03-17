@@ -1,0 +1,17 @@
+{
+  "name": "keyu",
+  "version": "1.0.0",
+  "description": "Key utilities for everyday use",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "utils",
+    "utilities",
+    "key"
+  ],
+  "author": "Carles Iborra",
+  "repository": "github:nerac/keyu",
+  "license": "MIT"
+}
