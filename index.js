@@ -1,1 +1,1 @@
-module.exports = { ...require('./fp'), ...require('./object') };
+module.exports = { ...require('./fp'), ...require('./collections') };
