@@ -1,1 +1,5 @@
-module.exports = { ...require('./fp'), ...require('./collections') };
+module.exports = {
+    ...require('./fp'),
+    ...require('./concurrency'),
+    ...require('./collections')
+};
