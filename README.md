@@ -1,5 +1,9 @@
 # Keyu
 
+[![](https://img.shields.io/npm/v/keyu.svg)](https://npmjs.com/package/keyu)
+[![Build Status](https://travis-ci.org/nerac/keyu.svg?branch=master)](https://travis-ci.org/nerac/keyu)
+[![install size](https://packagephobia.now.sh/badge?p=keyu)](https://packagephobia.now.sh/result?p=keyu)
+
 **Key u**tilities you will need for any complex javascript project.
 
 ## Utilities
