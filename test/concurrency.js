@@ -34,18 +34,4 @@ describe('Concurrency', function() {
         }
     });
   });
-  describe('#CircuitBreak()', function() {
-      const fnFail = x => 1;
-      const fnBreak = x => 2;
-    it('should return the result of the function every time', function(){
-        let cb = circuitBreak({cooldown:1000,tries:2});
-        assert.deepEqual(cb(JSON.parse,fnFail,fnBreak,'{}'),{});
-        assert.deepEqual(cb(JSON.parse,fnFail,fnBreak,'{}'),{});
-        assert.deepEqual(cb(JSON.parse,fnFail,fnBreak,'{}'),{});
-    });
-    it('should return the failure function if it fails', function(){
-        let cb = circuitBreak({cooldown:1000,tries:2});
-        assert.deepEqual(cb(JSON.parse,fnFail,fnBreak,{}),1);
-    });
-  });
 });
