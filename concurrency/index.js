@@ -1,6 +1,3 @@
-const { either } = require('../logic');
-const { curry } = require('../fp');
-
 Promise.any = promises => Promise.all(promises.map(promise => promise.then(value => ({ value })).catch(error => ({ error }))));
 
 Promise.best = promises =>

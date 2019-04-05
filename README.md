@@ -6,7 +6,7 @@
 
 [![NPM](https://nodei.co/npm/keyu.png)](https://nodei.co/npm/keyu/)
 
-**Key u**tilities you will need for any complex javascript project.
+**Key u**tilities that you mis when you develop a javascript project.
 
 ## Utilities
 
@@ -14,7 +14,7 @@
 
 #### Compose
 
-Composes N functions into another one, also accept functions that a return Promise.
+Compose N functions, works with promises too.
 
 ```
 const {compose} = require('keyu');
@@ -29,9 +29,10 @@ const sumAndMultDB = compose(dbSum,mult2,sum1);
 sumAndMult(1) // 4
 sumAndMultDB(1) // Promise(5)
 ```
+
 #### Pipe
 
-Pipe N functions into another one, also accept functions that a return Promise.
+Compose N functions in reverse order, works promises too.
 
 ```
 const {pipe} = require('keyu');
@@ -51,7 +52,8 @@ sumAndMultDB(1) // Promise(5)
 
 #### Map
 
-Maps over every key of an object
+Maps an object based on the mapping function passed.
+
 ```
 let obj = {a:1,b:2,c:3};
 
@@ -60,6 +62,7 @@ console.log(obj.map((value, key) => `${key}:${value+1}`)) // {a:'a:2'}
 ```
 
 functional programmming implementation:
+
 ```
 const {map,compose} = require('keyu');
 
@@ -71,7 +74,8 @@ sum1({a:1}) // {a:2}
 
 #### Filter
 
-Filters an object for each single key
+Filters an object based on the filter function passed.
+
 ```
 let obj = {a:1,b:2,c:3};
 
@@ -93,11 +97,60 @@ greaterThan5({a:1,b:2,c:3,d:4,e:5,f:6,g:7}) // {f:6,g:7}
 
 ### Concurrency
 
-#### Any
+#### Promise.any
 
-Promise.all follows a fail-fast pattern meaning that if one single promise fails it stops returning the failure.
-This implements Promise.any which will return the result of all promises independenly if they fail or not.
+Promise.all executes an array of promises in parallel and returns all of them either they are sucessful or not without failing.
 
 ```
 Promise.any([Promise.resolve(1),Promise.reject(2), Promise.resolve(3)]).then(console.log) // [ { value: 1 }, { error: 2 }, { value: 3 } ]
+```
+
+#### Promise.best
+
+Promise.best execute an array of promises in parallel and returns the first one to be sucessful.
+
+```
+Promise.best([Promise.reject(1),Promise.resolve(2), Promise.resolve(3)]).then(console.log) // 2
+
+Promise.best([Promise.reject(1),Promise.reject(2), Promise.reject(3)]).catch(console.log) // [1,2,3]
+```
+
+### Conversions
+
+#### jsonOr
+
+Converts safetly any input into a json, if it fails returns the default function value.
+
+```
+jsonOr(33)('{"a":1}') // -> {a:1}
+jsonOr(33)(null) // -> 33
+jsonOr(value => 33)(null) // -> 33
+```
+
+#### floatOr
+
+Converts safetly any input into a float, if it fails returns the default function value.
+
+```
+floatOr(33)('11.33') // -> 11.33
+floatOr(33)(null) // -> 33
+floatOr(value => 33)(null) // -> 33
+```
+
+#### intOr
+
+Converts safetly any input into an integer, if it fails returns the default function value.
+
+```
+intOr(33)('11') // -> 11
+intOr(33)(null) // -> 33
+intOr(value => 33)(null) // -> 33
+```
+
+#### setPrecision
+
+Set the amount of decimals for any given float safelty or returns cero precision.
+
+```
+setPrecision(3,'1.1234') // -> 1.234
 ```
