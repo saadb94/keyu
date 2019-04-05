@@ -1,6 +1,7 @@
 # Keyu
 
 [![Build Status](https://travis-ci.org/nerac/keyu.svg?branch=master)](https://travis-ci.org/nerac/keyu)
+[![Coverage Status](https://coveralls.io/repos/github/nerac/keyu/badge.svg?branch=master)](https://coveralls.io/github/nerac/keyu?branch=master)
 [![install size](https://packagephobia.now.sh/badge?p=keyu)](https://packagephobia.now.sh/result?p=keyu)
 [![Known Vulnerabilities](https://snyk.io/test/npm/keyu/badge.svg)](https://snyk.io/test/npm/keyu)
 
