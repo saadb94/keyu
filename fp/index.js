@@ -3,4 +3,10 @@ const mixCompose = (chain, func) => (chain instanceof Promise || typeof chain.th
 const pipe = (...fn) => input => fn.reduce(mixCompose,input);
 const compose = (...fn) => input => fn.reduceRight(mixCompose,input);
 
-module.exports = {pipe, compose};
+const curry = f => {
+  return function currify() {
+    const args = Array.prototype.slice.call(arguments);
+    return args.length >= f.length ? f.apply(null, args) : currify.bind(null, ...args)
+  }
+}
+module.exports = {pipe, compose, curry};
