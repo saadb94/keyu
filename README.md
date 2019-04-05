@@ -1,4 +1,4 @@
-# Keyu
+![logo](logo.png)
 
 [![Build Status](https://travis-ci.org/nerac/keyu.svg?branch=master)](https://travis-ci.org/nerac/keyu)
 [![Coverage Status](https://coveralls.io/repos/github/nerac/keyu/badge.svg?branch=master)](https://coveralls.io/github/nerac/keyu?branch=master)
@@ -7,7 +7,17 @@
 
 [![NPM](https://nodei.co/npm/keyu.png)](https://nodei.co/npm/keyu/)
 
-**Key u**tilities that you mis when you develop a javascript project.
+**Keyu** (key utilities) provides **flexible** utilities to help you build **solid** projects <u>without repeating yourself</u>.
+
+With this utilities you will be able to:
+
+- Build some functional programming code.
+- Work with asyncronous code like if it was syncronous\*.
+- Iterate objects in same way you iterate arrays.
+- Apply some advanced concurrency patterns ([Rob Pike](https://www.youtube.com/watch?v=f6kdp27TYZs)).
+- Convert integers, floats or json correctly and safetly.
+
+<small>\*compose functions independently if they return promises or actual values</small>
 
 ## Utilities
 
