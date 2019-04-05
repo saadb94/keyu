@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "vet": "./node_modules/.bin/eslint ./",
-    "ci": "./node_modules/.bin/eslint --fix ./ && mocha",
-    "test": "nyc mocha"
+    "ci": "./node_modules/.bin/eslint --fix ./ && nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "test": "mocha",
+    "coverage": "nyc npm test"
   },
   "keywords": [
     "utils",
@@ -17,18 +18,20 @@
   "repository": "github:nerac/keyu",
   "license": "MIT",
   "devDependencies": {
+    "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.3.1",
     "mocha": "^6.0.2",
+    "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.3.0",
     "prettier": "1.16.4",
     "pretty-quick": "^1.10.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run ci && pretty-quick --staged"
+      "pre-commit": "npm run vet && npm test && pretty-quick --staged"
     }
   }
 }
