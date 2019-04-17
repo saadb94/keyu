@@ -1,15 +1,16 @@
-const { either, fnOrValue, identity } = require('../logic');
+const { either, fnOrValue } = require('../logic');
 const { curry } = require('../fp');
 
-const parseOr = (parser, output = identity) => def =>
+const parseOr = curry((parser, def) =>
   either(data => {
     let res = parser(data);
-    return output(res) ? res : res === 0 ? res : fnOrValue(def, data);
-  }, def);
+    return res || (res === 0 ? res : fnOrValue(def, data));
+  }, def)
+);
 
 const jsonOr = parseOr(JSON.parse);
 const floatOr = parseOr(parseFloat);
-const intOr = parseOr(parseInt);
+const intOr = parseOr(num => parseInt(`${num}`));
 
 const setPrecision = curry((value, num) => +num.toFixed(value));
 
