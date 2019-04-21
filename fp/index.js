@@ -7,9 +7,9 @@ const curry = f => {
   if (typeof f !== 'function') {
     throw new Error(`curry requires a function, [${typeof f}] passed`);
   }
-  return function currify() {
-    const args = Array.prototype.slice.call(arguments);
-    return args.length >= f.length ? f.apply(null, args) : currify.bind(null, ...args);
+  return function currify(...arg) {
+    const args = Array.prototype.slice.call(arg);
+    return args.length >= f.length ? f(...args) : currify.bind(null, ...args);
   };
 };
 module.exports = { pipe, compose, curry };
