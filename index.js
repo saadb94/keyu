@@ -6,10 +6,10 @@ const types = require('./types');
 const conversions = require('./conversions');
 
 module.exports = {
-  fp,
-  concurrency,
-  collections,
-  logic,
-  types,
-  conversions
+  ...fp,
+  ...concurrency,
+  ...collections,
+  ...logic,
+  ...types,
+  ...conversions
 };

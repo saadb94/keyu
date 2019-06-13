@@ -1,22 +1,24 @@
 const { curry } = require('../fp');
 
-// eslint-disable-next-line no-extend-native
-Object.prototype.reduce = function(fn, val) {
-  return Object.entries(this).reduce((acc, [k, v]) => fn(acc, v, k), val) || {};
-};
+const reduce = curry((fn, def, collection) => {
+  if (Array.isArray(collection)) {
+    return collection.reduce(fn, def);
+  }
+  return Object.entries(collection).reduce((acc, [k, v]) => fn(acc, v, k), def);
+});
 
-// eslint-disable-next-line no-extend-native
-Object.prototype.map = function(fn) {
-  return this.reduce((acc, v, k) => ({ ...acc, [k]: fn(v, k) }), {});
-};
+const map = curry((fn, collection) => {
+  if (Array.isArray(collection)) {
+    return collection.map(fn);
+  }
+  return reduce((acc, v, k) => ({ ...acc, [k]: fn(v, k) }), {}, collection);
+});
 
-// eslint-disable-next-line no-extend-native
-Object.prototype.filter = function(fn) {
-  return this.reduce((acc, v, k) => fn(v, k) && { ...acc, [k]: v }, {});
-};
-
-const map = curry((fn, col) => col.map(fn));
-const filter = curry((fn, col) => col.filter(fn));
-const reduce = curry((fn, val, col) => col.reduce(fn, val));
+const filter = curry((fn, collection) => {
+  if (Array.isArray(collection)) {
+    return collection.filter(fn);
+  }
+  return reduce((acc, v, k) => (fn(v, k) && { ...acc, [k]: v }) || {}, {}, collection);
+});
 
 module.exports = { map, filter, reduce };
