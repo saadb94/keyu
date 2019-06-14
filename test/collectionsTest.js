@@ -11,10 +11,11 @@ describe('Collections', function() {
   describe('#reduce()', function() {
     it('should return the sumation of its keys', function() {
       let a = { a: 1, b: 2 };
+      let b = [1, 2];
       let sum = (a, b) => a + b;
 
       assert.strictEqual(reduce(sum, 0, a), 3);
-      assert.strictEqual(reduce(sum, 0)(a), 3);
+      assert.strictEqual(reduce(sum, 0)(b), 3);
     });
   });
   describe('#map()', function() {
