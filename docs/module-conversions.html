@@ -1,0 +1,489 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.6.2">
+  <meta charset="utf-8">
+  <title>keyu 2.0.0 &raquo; Module: conversions</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">keyu 2.<wbr>0.<wbr>0</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">module</span></div>
+            <h1><small></small><span class="symbol-name">conversions</span></h1>
+            <p class="source-link">Source: <a href="conversions_index.js.html">conversions/<wbr>index.<wbr>js</a></p>
+            <div class="symbol-description">
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-conversions.html#~floatOr">floatOr(defaultValue, data)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-conversions.html#~intOr">intOr(defaultValue, data)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-conversions.html#~jsonOr">jsonOr(defaultValue, data)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-conversions.html#~parseOr">parseOr(parser, evaluator, defaultValue, data)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-conversions.html#~setPrecisionOr">setPrecisionOr(decimals, defaultValue, num)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~floatOr"><span class="symbol-name">floatOr</span><span class="signature"><span class="signature-params">(defaultValue, data)</span>&nbsp;&rarr; <span class="signature-returns"> (Float or any type)</span></span></h3>
+              <p>Converts passed data to float or returns the default value on failure. <sup>(curried)</sup></p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>floatOr(-1,&quot;x33x&quot;) // -&gt; -1
+floatOr(() &#x3D;&gt; throw Errot(&quot;Ups!&quot;),&quot;x33x&quot;) // -&gt; Error: Ups!
+floatOr(-1)(&#x27;45.553&#x27;) // -&gt; 45.553</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>defaultValue</p>
+                      </td>
+                      <td>
+                        <p>(Object or function())</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>default value or function to be returned if it fails.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>any kind of data that we want to parse as float</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://en.wikipedia.org/wiki/Currying">Curring</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/conversionsTest.js">conversionsTest.js</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(Float or any type)</code> <p>Parsed value or the default one.</p>
+                  </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~intOr"><span class="symbol-name">intOr</span><span class="signature"><span class="signature-params">(defaultValue, data)</span>&nbsp;&rarr; <span class="signature-returns"> (Int or any type)</span></span></h3>
+              <p>Converts passed data to int or returns the default value on failure. <sup>(curried)</sup></p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>intOr(-1,&quot;x33x&quot;) // -&gt; -1
+intOr(() &#x3D;&gt; throw Errot(&quot;Ups!&quot;),&quot;x33x&quot;) // -&gt; Error: Ups!
+intOr(-1)(&#x27;45.553&#x27;) // -&gt; 45</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>defaultValue</p>
+                      </td>
+                      <td>
+                        <p>(Object or function())</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>default value or function to be returned if it fails.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>any kind of data that we want to parse as int</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://en.wikipedia.org/wiki/Currying">Curring</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/conversionsTest.js">conversionsTest.js</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(Int or any type)</code> <p>Parsed value or the default one.</p>
+                  </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~jsonOr"><span class="symbol-name">jsonOr</span><span class="signature"><span class="signature-params">(defaultValue, data)</span>&nbsp;&rarr; <span class="signature-returns"> (Object or any type)</span></span></h3>
+              <p>Converts passed data into a JSON or returns the default value on failure. <sup>(curried)</sup></p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>jsonOr(-1,&quot;sfdjl&quot;) // -&gt; -1
+jsonOr(() &#x3D;&gt; throw Errot(&quot;Ups!&quot;),&quot;sfdjl&quot;) // -&gt; Error: Ups!
+jsonOr(-1)(&#x27;{&quot;a&quot;:1}&#x27;) // -&gt; {a:1}</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>defaultValue</p>
+                      </td>
+                      <td>
+                        <p>(Object or function())</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>default value or function to be returned if it fails.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>any kind of data that we want to parse as JSON</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://en.wikipedia.org/wiki/Currying">Curring</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/conversionsTest.js">conversionsTest.js</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(Object or any type)</code> <p>Parsed value or the default one.</p>
+                  </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~parseOr"><span class="symbol-name">parseOr</span><span class="signature"><span class="signature-params">(parser, evaluator, defaultValue, data)</span>&nbsp;&rarr; <span class="signature-returns"> any type</span></span></h3>
+              <p>Generic function. Parses a value using a parser function, then
+                evaluates the result with an evaluator function. <sup>(curried)</sup></p>
+              <p>If the parser throws any exception or the evaluator fails the default value is returned.</p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>jsonOr &#x3D; parseOr(JSON.parse,isObject);
+jsonOr(0,{}) // -&gt; {}
+jsonOr(0,null) // -&gt; 0</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>parser</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>parse function to transform the data input</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>evaluator</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>evaluates the output of the parser</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>defaultValue</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>value/function to be returned/executed if it fails</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>any type</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>any kind of data that we want to parse</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/conversionsTest.js">conversionsTest.js</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://en.wikipedia.org/wiki/Currying">Curring</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>any type</code> <p>parsed value or default one</p>
+                  </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~setPrecisionOr"><span class="symbol-name">setPrecisionOr</span><span class="signature"><span class="signature-params">(decimals, defaultValue, num)</span>&nbsp;&rarr; <span class="signature-returns"> Float</span></span></h3>
+              <p>Fixes the number of decimals of a float.
+                Returns the default value if non numeric value passed.<sup>(curried)</sup></p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>setPrecisionOr(1,&quot;fail&quot;, 3.44) // -&gt; 3.4
+setPrecisionOr(1,&quot;fail&quot;, null) // -&gt; &quot;fail&quot;
+setPrecisionOr(0,&quot;fail&quot;, 3.44) // -&gt; 3</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>decimals</p>
+                      </td>
+                      <td>
+                        <p>Int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>number of decimals to fix.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>defaultValue</p>
+                      </td>
+                      <td>
+                        <p>(function() or any type)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>value to be returned if non number received</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>num</p>
+                      </td>
+                      <td>
+                        <p>Float</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>float number that we want to fix it's decimals.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://en.wikipedia.org/wiki/Currying">Curring</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/conversionsTest.js">conversionsTest.js</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Float</code> </p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.6.2 on June 16, 2019.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

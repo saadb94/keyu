@@ -13,6 +13,7 @@ const { curry } = require('../fp');
  * //Objects
  * reduce((a,v,k)=> ({..a,[k],v+1}),{},{a:1,b:2}) // -> {a:2,b:3}
  * @returns {*}
+ * @see [collectionsTest.js](https://github.com/nerac/keyu/blob/master/test/collectionsTest.js)
  * @method
  * */
 const reduce = curry((fn, init, collection) => {
@@ -31,6 +32,7 @@ const reduce = curry((fn, init, collection) => {
  * //Objects
  * map(x => x+1, {a:1,b:2}) // -> {a:2,b:3}
  * @returns {Array|Object}
+ * @see [collectionsTest.js](https://github.com/nerac/keyu/blob/master/test/collectionsTest.js)
  * @method
  * */
 const map = curry((fn, collection) => {
@@ -49,6 +51,7 @@ const map = curry((fn, collection) => {
  * //Objects
  * filter(x => x > 1, {a:1,b:2}) // -> {b:2}
  * @returns {Array|Object}
+ * @see [collectionsTest.js](https://github.com/nerac/keyu/blob/master/test/collectionsTest.js)
  * @method
  * */
 const filter = curry((fn, collection) => {

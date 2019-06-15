@@ -1,6 +1,6 @@
 /* global it describe */
 const assert = require('assert');
-const { isNumber } = require('../types');
+const { isNumber, isObject, isNil } = require('../types');
 
 describe('Types', function() {
   describe('#isNumber()', function() {
@@ -18,6 +18,35 @@ describe('Types', function() {
     it('should return false for any kind of string', function() {
       assert.strictEqual(isNumber('1x'), false);
       assert.strictEqual(isNumber('x11'), false);
+    });
+  });
+  describe('#isObject()', function() {
+    it('should return false for undefined types', function() {
+      assert.strictEqual(isObject(), false);
+      assert.strictEqual(isObject(null), false);
+      assert.strictEqual(isObject(undefined), false);
+    });
+    it('should return true for objects', function() {
+      assert.strictEqual(isObject({}), true);
+      assert.strictEqual(isObject({ a: 1 }), true);
+    });
+    it('should return true for instances', function() {
+      assert.strictEqual(isObject(new Error('hello')), true);
+    });
+  });
+  describe('#isNil()', function() {
+    it('should true for undefined', function() {
+      assert.strictEqual(isNil(), true);
+    });
+    it('should true for null', function() {
+      assert.strictEqual(isNil(null), true);
+    });
+    it('should false for any existent type', function() {
+      assert.strictEqual(isNil(0), false);
+      assert.strictEqual(isNil(''), false);
+      assert.strictEqual(isNil(1.234), false);
+      assert.strictEqual(isNil({}), false);
+      assert.strictEqual(isNil([]), false);
     });
   });
 });
