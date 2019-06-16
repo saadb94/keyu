@@ -1,6 +1,6 @@
 /* global it describe */
 const assert = require('assert');
-const { isNumber, isObject, isNil } = require('../types');
+const { isNumber, isObject, isNil, getFuncName } = require('../types');
 
 describe('Types', function() {
   describe('#isNumber()', function() {
@@ -47,6 +47,24 @@ describe('Types', function() {
       assert.strictEqual(isNil(1.234), false);
       assert.strictEqual(isNil({}), false);
       assert.strictEqual(isNil([]), false);
+    });
+  });
+  describe('#getFuncName()', function() {
+    it('should return Unknown if called outside a function', function() {
+      assert.strictEqual(getFuncName(), 'Unknown');
+    });
+    it('should return the passed value if called outside a function', function() {
+      assert.strictEqual(getFuncName('ups'), 'ups');
+    });
+    it('should return the name of the arrow function that called ', function() {
+      const hellow = () => getFuncName();
+      assert.strictEqual(hellow(), 'hellow');
+    });
+    it('should return the name of the regular function that called ', function() {
+      function hellow() {
+        return getFuncName();
+      }
+      assert.strictEqual(hellow(), 'hellow');
     });
   });
 });

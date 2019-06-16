@@ -35,4 +35,19 @@ const isObject = obj => typeof obj === 'object' && !Array.isArray(obj) && obj !=
  */
 const isNil = value => typeof value === 'undefined' || value === null;
 
-module.exports = { isNumber, isObject, isNil };
+/** Returns the name of the function in which is called.
+ * @argument {String} [defaultValue] string for unknown calls.
+ * @returns {String} indicating the possible name of the function
+ * @example
+ * const hello = () => getFuncName()
+ * hello() // -> "hello"
+ * getFuncName() // -> "Unknown"
+ * getFuncName("ups") // -> "ups"
+ * @see [typesTest.js](https://github.com/nerac/keyu/blob/master/test/typesTest.js)
+ * @method
+ */
+function getFuncName(defaultValue = 'Unknown') {
+  return (getFuncName.caller && getFuncName.caller.name) || defaultValue;
+}
+
+module.exports = { isNumber, isObject, isNil, getFuncName };
