@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.6.2">
+  <meta charset="utf-8">
+  <title>keyu 2.0.0 &raquo; Module: concurrency</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">keyu 2.<wbr>0.<wbr>0</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">module</span></div>
+            <h1><small></small><span class="symbol-name">concurrency</span></h1>
+            <p class="source-link">Source: <a href="concurrency_index.js.html">concurrency/<wbr>index.<wbr>js</a></p>
+            <div class="symbol-description">
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-concurrency.html#~best">best(promises)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-concurrency.html#~full">full(promises)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~best"><span class="symbol-name">best</span><span class="signature"><span class="signature-params">(promises)</span>&nbsp;&rarr; <span class="signature-returns"> Promise</span></span></h3>
+              <p>Given <strong>N promises</strong> will return <u>the fastest non-failed one</u>.
+                This pattern can be useful some times to reduce latency.</p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>await best([Promise.resolve(1),Promise.resolve(2)]) // -&gt; 1 (assuming 1 is the first to resolve)
+await best([Promise.reject(1),Promise.resolve(2)]) // -&gt; 2</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>promises</p>
+                      </td>
+                      <td>
+                        <p>Array(Promise)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of all promises to be executed</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://ieeexplore.ieee.org/document/7348681">When Do Redundant Requests Reduce Latency?</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob-Pike</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/concurrencyTest.js">concurrencyTest.js</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Promise</code> </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~full"><span class="symbol-name">full</span><span class="signature"><span class="signature-params">(promises)</span>&nbsp;&rarr; <span class="signature-returns"> Array(Object)</span></span></h3>
+              <p>A <strong>Promise.all</strong> that does not fails-fast.
+                Given N promises will return all of them <u>independenly if they failed or not</u>.</p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>await full([Promise.resolve(1), Promise.reject(2), Promise.resolve(3)])
+// [ { value: 1 }, { error: 2 }, { value: 3 } ]</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>promises</p>
+                      </td>
+                      <td>
+                        <p>Array(Promise)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of all promises to be executed</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>See also</dt>
+                <dd>
+                  <p><a href="https://en.wikipedia.org/wiki/Fail-fast">Fail-fast</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob-Pike</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/concurrencyTest.js">concurrencyTest.js</a></p>
+                </dd>
+                <dd>
+                  <p><a href="https://github.com/nerac/keyu/blob/master/test/concurrencyTest.js">concurrencyTest.js</a></p>
+                </dd>
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array(Object)</code> </p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.6.2 on June 17, 2019.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

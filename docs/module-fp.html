@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.6.2">
+  <meta charset="utf-8">
+  <title>keyu 2.0.0 &raquo; Module: fp</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">keyu 2.<wbr>0.<wbr>0</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">module</span></div>
+            <h1><small></small><span class="symbol-name">fp</span></h1>
+            <p class="source-link">Source: <a href="fp_index.js.html">fp/<wbr>index.<wbr>js</a></p>
+            <div class="symbol-description">
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-fp.html#~compose">compose(arguments)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-fp.html#~curry">curry(function)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-fp.html#~mixCompose">mixCompose(chain, func)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-fp.html#~pipe">pipe(arguments)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~compose"><span class="symbol-name">compose</span><span class="signature"><span class="signature-params">(arguments)</span>&nbsp;&rarr; <span class="signature-returns"> (function() or Promise)</span></span></h3>
+              <p>Compose regular functions or promises generating a final function.</p>
+              <ul>
+                <li>Compose works from right to left.</li>
+                <li>If you compose one single promise the final result will be a promise too.</li>
+                <li>You can only compose functions with the same arity.</li>
+              </ul>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>const sum3 &#x3D; a &#x3D;&gt; a+3
+const mult2 &#x3D; a &#x3D;&gt; a*2
+const sum2Async &#x3D; a &#x3D;&gt; Promise.resolve(a+2) // Simulate async response
+
+const sumAndMult &#x3D; compose(sum3,mult2);
+sumAndMult(1) // -&gt; (1*2)+3 &#x3D; 5
+
+const sumAndMultAsync &#x3D; compose(sum3,mult2,sum2Async);
+await sumAndMultAsync(1) // -&gt; ((1+2)*2)+3 &#x3D; 9</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>arguments</p>
+                      </td>
+                      <td>
+                        <p>(function() or Promise)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>N number of functions or promises.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(function() or Promise)</code> <p>function or Promise that execute the all composed ones.</p>
+                  </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~curry"><span class="symbol-name">curry</span><span class="signature"><span class="signature-params">(function)</span>&nbsp;&rarr; <span class="signature-returns"> function()</span></span></h3>
+              <p>Currify any function allowing the partial application of its arguments</p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>const sum &#x3D; curry((a,b) &#x3D; a+b);
+const sum3 &#x3D; sum(3);
+sum3(3) // -&gt; 6
+sum(3,3) // -&gt; 6
+sum(3)(3) // -&gt; 6</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>function</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>function with at least two arguments</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>function()</code> <p>curried function.</p>
+                  </p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~mixCompose"><span class="symbol-name">mixCompose</span><span class="signature"><span class="signature-params">(chain, func)</span></span></h3>
+              <p>Reducer function used by <code>pipe</code> and <code>compose</code> functions to compose sync and async functions</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>chain</p>
+                      </td>
+                      <td>
+                        <p>(function() or Promise)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>a chain of functions or promises</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>func</p>
+                      </td>
+                      <td>
+                        <p>(function() or Promise)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>a new function or promise to add to the chain</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~pipe"><span class="symbol-name">pipe</span><span class="signature"><span class="signature-params">(arguments)</span>&nbsp;&rarr; <span class="signature-returns"> (function() or Promise)</span></span></h3>
+              <p>Compose regular functions or promises generating a final function.</p>
+              <ul>
+                <li>Compose works from left to right.</li>
+                <li>If you compose one single promise the final result will be a promise too.</li>
+                <li>You can only compose functions with the same arity.</li>
+              </ul>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>const sum3 &#x3D; a &#x3D;&gt; a+3
+const mult2 &#x3D; a &#x3D;&gt; a*2
+const sum2Async &#x3D; a &#x3D;&gt; Promise.resolve(a+2) // Simulate async response
+
+const sumAndMult &#x3D; pipe(sum3,mult2);
+sumAndMult(1) // -&gt; (1+3)*2 &#x3D; 8
+
+const sumAndMultAsync &#x3D; pipe(sum3,mult2,sum2Async);
+await sumAndMultAsync(1) // -&gt; ((1+3)*2)+2 &#x3D; 10</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>arguments</p>
+                      </td>
+                      <td>
+                        <p>(function() or Promise)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>N number of functions or promises.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>(function() or Promise)</code> <p>function or Promise that execute the all composed ones.</p>
+                  </p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.6.2 on June 17, 2019.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
